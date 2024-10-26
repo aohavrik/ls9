@@ -39,9 +39,35 @@
 // - Повторіть колбек функцію bubbleSort з лекції 
 
 
+function bubbleSort(arr, callback) {
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr.length; j++) {
+            const compRes = callback(arr[j], arr[j + 1])
+            if (compRes) {
+                let box = arr[j]
+                arr[j] = arr[j + 1]
+                arr[j + 1] = box
+            }
+        }
+    }
+    return arr
+}
+let refuge = [1, 2, 5, 4, 10, 3, 13, 11, 100, 8, 15, 20, 19];
+
+function FuncA(a, b) {
+    return a > b
+}
+
+function FuncB(a, b) {
+    return a < b
+}
+
+const arrA = bubbleSort(refuge, FuncA)
+
+console.log('від меншого до більшого\n', arrA);
 
 
-
+/* 
 // Калькурятор.
 //  Створіть функцію calc(num1, num2, action), яка приймає 2 числа з prompt
 //  та знак по якому потірбно порахувати приклад. Мусять бути наступні дії: (+, -, /, *)
@@ -115,4 +141,4 @@ switch (numAction) {
         actionCallback = () => "Невідома дія!";
 }
 
-console.log(calc3(num1, num2, actionCallback));
+console.log(calc3(num1, num2, actionCallback)); */
